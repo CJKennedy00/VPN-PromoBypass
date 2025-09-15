@@ -7,7 +7,7 @@ import select
 LISTEN_HOST = '127.0.0.1'
 LISTEN_PORT = 8080
 FORWARD_HOST = '127.0.0.1'
-FORWARD_PORT = 1994
+FORWARD_PORT = NULL
 BUFFER_SIZE = 4096
 
 def handle_client(client_socket):
