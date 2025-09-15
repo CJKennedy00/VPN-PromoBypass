@@ -1,0 +1,4 @@
+www-data ALL=(ALL) NOPASSWD: /usr/sbin/useradd
+www-data ALL=(ALL) NOPASSWD: /usr/sbin/userdel
+www-data ALL=(ALL) NOPASSWD: /usr/sbin/chpasswd
+www-data ALL=(ALL) NOPASSWD: /usr/bin/chage
