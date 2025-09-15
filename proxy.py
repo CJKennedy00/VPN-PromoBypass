@@ -5,7 +5,7 @@ import select
 
 # --- Configuration ---
 LISTEN_HOST = '127.0.0.1'
-LISTEN_PORT = 8080
+LISTEN_PORT = NULL
 FORWARD_HOST = '127.0.0.1'
 FORWARD_PORT = NULL
 BUFFER_SIZE = 4096
