@@ -1,0 +1,24 @@
+#!/bin/bash
+# v1.0: VPN Connection & Sessions Tracker
+SSH_PORT=1994
+
+echo ""
+echo "Active VPN Sessions"
+echo "========================================================================="
+printf "%-20s %-35s %s\n" "USERNAME" "CONNECTED AT" "SESSION DURATION"
+echo "========================================================================="
+
+(sudo lsof -iTCP:${SSH_PORT} -sTCP:ESTABLISHED -n -P | grep -v 'LISTEN' | while read -r line; do
+    USER=$(echo "$line" | awk '{print $3}')
+    
+    if getent group vpnusers | grep -qw "$USER"; then
+        PID=$(echo "$line" | awk '{print $2}')
+        
+        START_TIME=$(date -d "$(ps -o lstart= -p "$PID")" +"%a %b %d %Y %I:%M:%S %p")
+        ELAPSED_TIME=$(ps -o etime= -p "$PID" | tr -d ' ')
+        
+        printf "%-20s %-35s %s\n" "$USER" "$START_TIME" "$ELAPSED_TIME"
+    fi
+done) | sort -u
+
+echo ""
