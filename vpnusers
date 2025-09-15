@@ -1,6 +1,6 @@
 #!/bin/bash
 # v1.0: VPN Connection & Sessions Tracker
-SSH_PORT=1994
+SSH_PORT=NULL
 
 echo ""
 echo "Active VPN Sessions"
